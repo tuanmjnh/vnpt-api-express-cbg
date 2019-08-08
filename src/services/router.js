@@ -32,5 +32,7 @@ router
 
 // QRCode
 router.route('/qrcode').post(qrcode.getHDDT);
+router.route('/qrcode/table').get(qrcode.getTableHDDT);
+router.route('/qrcode/dulieucbg').post(qrcode.getHDDTDULIEU);
 
 module.exports = router;

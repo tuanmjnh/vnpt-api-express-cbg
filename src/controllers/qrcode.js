@@ -19,3 +19,33 @@ module.exports.getHDDT = async function(req, res, next) {
     next(err);
   }
 };
+
+module.exports.getTableHDDT = async function(req, res, next) {
+  try {
+    const result = await dbapi.getTableHDDT();
+    if (result.length > 0) {
+      res.status(200).json(result);
+    } else {
+      res.status(404).json({ msg: 'exist', params: 'data' });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+module.exports.getHDDTDULIEU = async function(req, res, next) {
+  try {
+    // check req data
+    if (!req.body.table) {
+      res.status(404).json({ msg: 'exist', params: 'table' });
+    }
+    const result = await dbapi.getHDDTDULIEU(req.body);
+    if (result.length > 0) {
+      res.status(200).json(result);
+    } else {
+      res.status(404).json({ msg: 'exist', params: 'data' });
+    }
+  } catch (err) {
+    next(err);
+  }
+};
