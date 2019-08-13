@@ -45,7 +45,7 @@ from bcss_cbg.hddt_${context.kyhoadon}`
 };
 
 module.exports.getTableHDDT = async function (context) {
-  let sql = `SELECT table_name "name" FROM user_tables WHERE table_name like 'HDDT_%' ORDER BY table_name`
+  let sql = `SELECT table_name "name" FROM user_tables WHERE table_name like '${context.table.toUpperCase()}%' ORDER BY table_name DESC`
   const result = await db.execute(sql)
   return result.rows
 };
@@ -85,10 +85,7 @@ module.exports.getHDDTDULIEU = async function (context) {
 from dulieu_cbg.${context.table}`
   if (context.ma_tt && context.ma_tt.length > 0) {
     sql += ` where ma_tt in('${context.ma_tt.join('\',\'')}')`
-  } // else {
-    // sql += ' OFFSET 0 ROWS FETCH NEXT 1000 ROWS ONLY'
-  // }
-  // console.log(context.ma_tt)
+  }
   const result = await db.execute(sql)
   return result.rows
 };

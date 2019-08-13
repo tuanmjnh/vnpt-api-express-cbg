@@ -1,4 +1,4 @@
-const dbapi = require("../db_apis/qrcode");
+const dbapi = require("../db_apis/hddt");
 const helpers = require("../util/helpers");
 
 module.exports.getHDDT = async function(req, res, next) {
@@ -22,7 +22,10 @@ module.exports.getHDDT = async function(req, res, next) {
 
 module.exports.getTableHDDT = async function(req, res, next) {
   try {
-    const result = await dbapi.getTableHDDT();
+    if (!req.query || !req.query.table) {
+      req.query.table = 'HDDT_'
+    }
+    const result = await dbapi.getTableHDDT(req.query);
     if (result.length > 0) {
       res.status(200).json(result);
     } else {

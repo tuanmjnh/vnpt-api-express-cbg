@@ -4,7 +4,7 @@ const router = express.Router();
 const common = require('../controllers/common');
 const filemanager = require('../controllers/filemanager');
 const auth = require('../controllers/auth');
-const qrcode = require('../controllers/qrcode');
+const hddt = require('../controllers/hddt');
 // const employees = require('../controllers/employees.js');
 
 // common
@@ -30,9 +30,9 @@ router
 // .put(auth.put)
 // .delete(auth.delete);
 
-// QRCode
-router.route('/qrcode').post(qrcode.getHDDT);
-router.route('/qrcode/table').get(qrcode.getTableHDDT);
-router.route('/qrcode/dulieucbg').post(qrcode.getHDDTDULIEU);
+// hddt
+router.route('/hddt').post(hddt.getHDDT);
+router.route('/hddt/table').get(hddt.getTableHDDT);
+router.route('/hddt/dulieucbg').post(hddt.getHDDTDULIEU);
 
 module.exports = router;

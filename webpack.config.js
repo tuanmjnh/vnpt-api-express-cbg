@@ -18,7 +18,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
-    path: path.join(__dirname, 'dist'),
+    path: '/Application/vnpt-api-express', // path.join(__dirname, 'dist'),
     filename: 'server.js',
     publicPath: '/'
   },
@@ -56,7 +56,7 @@ module.exports = {
   },
   plugins: [
     new webpack.ProgressPlugin(),
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new CopyPlugin([
       { from: './public/', to: './' },
       { from: './src/public/', to: './public/' },
